@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">About Your Insights</h1>
+        
+
+        <p class="w-75">
+            The table below will show your most listened-to artist, along with the genre of that artist. In order to delete or edit an insight, please click 
+            the respective buttons below.
+        </p>
+        <br>
+        
+        
+    </div>
+    <!--<button type="button" class="btn btn-secondary" style = "float:right;">Add Artist Insight</button>-->
+    <br>
+    <a href='/artisttest' class="btn btn-secondary" style = "float:right" role="button">Add Artist Insight</a>
+    <br>
+    <br>
+
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">Top Artists</h1>
+        <br>
+
+        <br>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Most Popular Artist</th>
+                <th scope="col">Most Popular Genre</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for artist in artist_insight %}
+              <tr>
+                <th scope="row">{{artist.id}}</th>
+                <td>{{artist.artist_content}}</td>
+                <td>{{artist.artist_genre}}</td>
+                <td>{{artist.date_posted}}</td>
+                <td><a class="link-dark" href="{{ url_for('update_artists', artist_id=artist.id) }}">Edit</a></td>
+                <td><a class="link-dark" href="{{ url_for('delete_artists', artist_id=artist.id) }}">Delete</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+    </div>
+        
+        
+   
+
+    <br>
+    <br>
+
+   
+</div>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.svg') }}" >
+    <link rel="icon" href="{{ url_for('static', filename='icon.svg') }}" >
+
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="static\main.css">
+    
+
+    <title>Spotify InSITE</title>
+  </head>
+  <body>
+    <!--BEGINNING OF NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='icon.PNG') }}" width="60", height="45">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+       <!-- BEGINNING OF NAV BUTTONS AND LINKS-->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('home_page') }}">Home</a>
+            <!--Register + Login-->
+            <a class="nav-link active" aria-current="page" href="{{ url_for('about_page') }}">About</a>
+            </div>
+            <div class ="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-link active" aria-current="page" href="{{ url_for('logout_page') }}">Logout</a>
+
+                <a class="nav-link active" aria-current="page" href="{{ url_for('authenticate_page') }}">Authenticate Spotify</a>
+
+                <a class="nav-link active" aria-current="page" href="{{ url_for('track_page') }}">Manage Track Insights</a>
+
+                <a class="nav-link active" aria-current="page" href="{{ url_for('artist_page') }}">Manage Artist Insights</a>
+
+                <a class="nav-link active" aria-current="page" href="{{ url_for('admin_page') }}">Manage User</a>
+
+            </div>
+              {% else %}
+            <div class ="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{{ url_for('login_page') }}">Login</a>
+
+                <a class="nav-link active" aria-current="page" href="{{ url_for('register_page') }}">Register</a>
+                
+              {% endif %}
+            </div>
+        </div>
+        <!--END OF NAV BUTTONS AND LINKS-->
+    </div>
+</nav>
+<!--END OF NAV-->
+
+    <div>
+    
+      <!--Allows flash messages-->
+      {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class = "alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+  <!--End of flash messages-->
+
+  
+      {% block content %}
+             
+      {% endblock %}
+      <!-- Footer -->
+<footer class="text-center text-lg-start bg-dark text-muted">
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <br>
+            <!-- WILL NEED TO ADD PERSONALIZED ICON-->
+            <i class="fas fa-gem me-3"></i>Spotify InSite
+          </h6>
+          <p>
+            Learn more about the music you love.
+          </p>
+          <p>Best viewed in Google Chrome.</p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <br>
+          API Information
+          </h6>
+          <p>
+            <a href="https://developer.spotify.com/" class="text-reset">Spotify API</a>
+          </p>
+          <p>
+            <a href="https://developer.spotify.com/documentation/" class="text-reset">API Documentation</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <br>
+          Useful links
+          </h6>
+          <p>
+            <a href="/" class="text-reset">Home</a>
+          </p>
+          <p>
+            <a href="/about" class="text-reset">About</a>
+          </p>
+          <p>
+            <a href="/register" class="text-reset">Register</a>
+          </p>
+          <p>
+            <a href="/login" class="text-reset">Login</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <br>
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p>
+            <a href="#!" class="text-reset">luke.garcia2@laverne.edu</a>
+          </p>
+          
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+
+
+</footer>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+
+    </body>
+    
+</html>

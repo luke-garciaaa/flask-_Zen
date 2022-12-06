@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">Admin Access</h1>
+        
+
+        <p class="w-75">
+            The table below shows all users of the website and allows administrators to add, edit, and delete users. In order to add a user, please click the 
+            'Add User' button below. 
+          
+        </p>
+        <p class = "w-75" style = "text-align:center;"> <b>NOTE:</b> <i>In order to delete a user, you <b>MUST</b> first delete all of their personalized insights. We don't want a user's information to remain in our databases
+          if they decide to delete their account.</i></p>
+        <br>
+        
+        
+    </div>
+    <!--<button type="button" class="btn btn-secondary" style = "float:right;">Add Track Insight</button>-->
+    <br>
+    <a href='/admin/adduser' class="btn btn-secondary" style = "float:right" role="button">Add User</a>
+    <br>
+    <br>
+
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">All Users</h1>
+        <br>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr>
+              <th scope="row">{{user.id}}</th>
+              <td>{{user.email}}</td>
+              <td>{{user.password}}</td>
+              <td><a class="link-dark" href="{{ url_for('update_users', user_id = user.id) }}">Edit</a></td>
+              <td><a class="link-dark" href="{{ url_for('delete_users', user_id = user.id) }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <br>
+        
+
+    </div>
+        
+        
+   
+
+    <br>
+    <br>
+
+   
+</div>
+
+{% endblock %}

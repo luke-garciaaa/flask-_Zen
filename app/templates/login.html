@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--BEGINNING OF NAV
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='icon.svg') }}" width="60", height="45">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        BEGINNING OF NAV BUTTONS AND LINKS
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('home_page') }}">Home</a>
+            Register + Login 
+            <a class="nav-link active" aria-current="page" href="{{ url_for('about_page') }}">About</a>
+            
+            <a class="nav-link active" aria-current="page" href="{{ url_for('login_page') }}">Login</a>
+
+            <a class="nav-link active" aria-current="page" href="{{ url_for('register_page') }}">Register</a>
+
+            <a class="nav-link active" aria-current="page" href="">Authenticate Spotify</a>
+            </div>
+        </div>
+        END OF NAV BUTTONS AND LINKS
+    </div>
+</nav>
+END OF NAV-->
+
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+   <div class="row d-flex justify-content-center align-items-center h-100">
+     <div class="col-xl-20">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.wep"
+                    style="width: 185px;" alt="logo">
+                  <h4 class="mt-1 mb-5 pb-1">Welcome to Spotify InSite</h4>
+                </div>
+    <!--BEGINNING OF FORM-->
+                <!--L47 Changed <form> to <form method = POST action = ""-->
+                  <form method = "POST" action = "">
+                    {{form.hidden_tag()}}
+                    <p>Please login to your account:</p>
+                      <!--L51 - 64 Different way to outline the form, email, pwd, confirmpwd-->
+                    <div class = "form-outline mb-4">
+                      <!--Form Label-->
+                      {{ form.email.label(class = "form-label") }}
+  
+                      <!--Error handling-->
+                      {% if form.email.errors %} <!--Beginning of if-->
+                        {{ form.email(class="form-control form-control is-invalid") }}
+                       <div class = "invalid-feedback">
+                        {% for error in form.email.errors %}
+                          <span>{{ error }}</span>
+                        {% endfor %}
+                       </div>
+                      {% else %}
+                        {{ form.email(class = "form-control form-control") }}
+                      {% endif %} <!-- End if -->
+  
+                    
+  
+                      
+                    </div>
+                    <!--Password Field-->
+                    <div class = "form-outline mb-4">
+                      {{ form.password.label(class = "form-label") }}
+                      <!--Error Handling-->
+                      {% if form.password.errors %} <!--Beginning of if-->
+                      {{ form.password(class="form-control form-control is-invalid") }}
+                     <div class = "invalid-feedback">
+                      {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                     </div>
+                    {% else %}
+                      {{ form.password(class = "form-control form-control") }}
+                    {% endif %} <!-- End if -->
+  
+                    </div>
+
+  
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      {{ form.submit(class = "btn btn-primary btn-block fa-lg gradient-custom-2 mb-3") }}
+                      <!--<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Register </button>-->
+  
+                    </div>
+                  
+  
+                    
+  
+                  </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">Spotify Insite</h4>
+                <p class="small mb-0">This website is not officially recognized or supported by Spotify. All functionality has been facilitated through the use of Spotify's free-to-use 
+                  API, the use of which has been approved by the SpotifyforDevelopers team.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">Mission Statement</h1>
+        <br>
+
+        <br>
+
+        <p class="w-75">
+            Our mission is to help provide users with personalized listening insights in order to help you learn more about the music you already love. 
+        </p>
+
+        <p class="w-75" style = "text-align:center;">
+            <b>Why music?</b>
+        </p>
+
+        <p class="w-75">
+            As an avid music listener, our developer wanted to spread Spotify's music insights to everyone who wants to see them.
+        </p>
+
+        <p class="w-75" style = "text-align:center;">
+            <b>How was this project developed?</b>
+        </p>
+        
+        <p class="w-75">
+            Our project leverages the Spotify Application Programming Interface (API) in order to retrive your personalized insights. 
+            This program was implemented using Flask, Python, CSS, HTML, and Bootstrap.  
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">User Guide</h1>
+        <br>
+
+        <br>
+
+        <p class="w-75">
+           In order to use this website, our users will have to follow a couple easy steps in order to retrieve their insights.
+        </p>
+
+        <p class="w-75" style = "text-align:center;">
+            <b>Step 1: Creating an Account / Logging In.</b>
+        </p>
+
+        <p class="w-75">
+            If you've already made a Spotify InSite account, please navigate to the <a href="/login">login</a> page.
+            <br>
+            If you haven't made a Spotify InSite account, please navigate to the <a href="/register">register</a> page. 
+            These pages will require your email address, along with a password.
+        </p>
+
+        <p class="w-75" style = "text-align:center;">
+            <b>Step 2: Authorizing your Spotify Account.</b>
+        </p>
+
+        <p class="w-75">
+            After you've created an account and logged in, please navigate to the "Authenticate Spotify" page. This page will give further information on how we use 
+            the Spotify API to access your personalized listening data.
+        </p>
+
+        <p class="w-75" style = "text-align:center;">
+            <b>Step 3: Accessing your personalized listening insights.</b>
+        </p>
+
+        <p class="w-75">
+            After authorizing the use of your Spotify Account, you will automatically be naviagated to the "Manage Track Insights" page. In order to access your track insights, click the
+            'Add Insight' button, and you will be able to view your insights in a table format. In order to view your album insights, repeat this process on the "Manage Album Insights" 
+            page.
+          
+        </p>   
+        
+    </div>
+
+    <br>
+    <br>
+
+   
+</div>
+
+
+{% endblock %}

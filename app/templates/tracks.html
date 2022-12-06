@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">About Your Insights</h1>
+        
+
+        <p class="w-75">
+            The table below will show your most listened-to song, along with the album of that song. In order to delete or edit an insight, please click 
+            the respective buttons below.
+        </p>
+        <br>
+        
+        
+    </div>
+    <!--<button type="button" class="btn btn-secondary" style = "float:right;">Add Track Insight</button>-->
+    <br>
+    <a href='/tracktest' class="btn btn-secondary" style = "float:right" role="button">Add Track Insight</a>
+    <br>
+    <br>
+
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">Top Tracks</h1>
+        <br>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Most Popular Track</th>
+              <th scope="col">Album</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for track in track_insight %}
+            <tr>
+              <th scope="row">{{track.id}}</th>
+              <td>{{track.track_content}}</td>
+              <td>{{track.track_genre}}</td>
+              <td>{{track.date_posted}}</td>
+              <td><a class="link-dark" href="{{ url_for('update_tracks', track_id=track.id) }}">Edit</a></td>
+             <!-- <td><a href="/updatetracks" class="link-dark">Edit</a></td> -->
+              <td><a class="link-dark" href="{{ url_for('delete_tracks', track_id=track.id) }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+        <!--BEGINNING OF DB IMPLEMENTATION-->
+        <!--{% for track in track_insight %}
+        <p> {{track.user_email}}</p>
+        <p> {{track.track_content}}</p>
+        <p> {{track.track_genre}}</p>
+        <p> {{track.date_posted}}</p>
+        {% endfor %}-->
+        <!--END OF DB IMPLEMENTATION-->
+        <br>
+        
+
+    </div>
+        
+        
+   
+
+    <br>
+    <br>
+
+   
+</div>
+
+
+<!--
+  ORIGINAL OUTPUT
+  <br>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">About Your Insights</h1>
+        
+
+        <p class="w-75">
+            The table below will show your most listened-to song, along with the album of that song. In order to delete or edit an insight, please click 
+            the respective buttons below.
+        </p>
+        <br>
+        
+        
+    </div>
+    <button type="button" class="btn btn-secondary" style = "float:right;">Add Track Insight</button>
+    <br>
+    <a href='/tracktest' class="btn btn-secondary" style = "float:right" role="button">Add Track Insight</a>
+    <br>
+    <br>
+
+    <div class="row justify-content-center">
+        <h1 class="w-75" style="text-align: center;">Current Tracks</h1>
+        <br>
+
+        <br>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Album</th>
+                <th scope="col">Most Popular Track</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Jujutsu Kaisen Sountrack(Original)</td>
+                <td>Self Embodiment of Perfection</td>
+                <td>9-28-2022</td>
+                <td><a href="#" class="link-dark">Edit</a></td>
+                <td><a href="#" class="link-dark">Delete</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jujutsu Kaisen Sountrack(Original)</td>
+                <td>The Beginning</td>
+                <td>9-30-2022</td>
+                <td><a href="#" class="link-dark">Edit</a></td>
+                <td><a href="#" class="link-dark">Delete</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Phonk</td>
+                <td>Love Bound</td>
+                <td>10-1-2022</td>
+                <td><a href="#" class="link-dark">Edit</a></td>
+                <td><a href="#" class="link-dark">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+    </div>
+        
+        
+   
+
+    <br>
+    <br>
+
+   
+</div>-->
+{% endblock %}

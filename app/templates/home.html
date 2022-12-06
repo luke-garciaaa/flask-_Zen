@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--BEGINNING OF NAV
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='icon.svg') }}" width="60", height="45">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        BEGINNING OF NAV BUTTONS AND LINKS
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('home_page') }}">Home</a>
+            Register + Login 
+            <a class="nav-link active" aria-current="page" href="{{ url_for('about_page') }}">About</a>
+            
+            <a class="nav-link active" aria-current="page" href="{{ url_for('login_page') }}">Login</a>
+
+            <a class="nav-link active" aria-current="page" href="{{ url_for('register_page') }}">Register</a>
+
+            <a class="nav-link active" aria-current="page" href="">Authenticate Spotify</a>
+            </div>
+        </div>
+        END OF NAV BUTTONS AND LINKS
+    </div>
+</nav>
+END OF NAV-->
+    <br>
+    <br>
+
+    <div class="container">
+        
+        <div class="row justify-content-center">
+            <h1 class='w-75' style="text-align:center"> Spotify InSite </h1>
+            <div class="w-75">
+                <br>
+                <p> Welcome to Spotify InSite! We aim to offer <b>individualized</b> Spotify Insights to our users. In order to begin, please follow the User Guide below.
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <h2 class="w-75" style="text-align: center"> User Guide </h2>
+            <p class="w-75">
+                
+            </p>
+            <p class="w-75" style="text-align:center">
+                In order receive your individualized insights, you must first create a <b>Spotify InSite</b> account. 
+                After your account has been created, you will be prompted to authenticate your Spotify Account.
+            </p>
+        </div>
+        
+        <br>
+        <div class="row justify-content-center">
+            <p class="w-75" style="text-align:center">
+                <b>NOTE:</b> <i> To use this service, you <b>MUST</b> have a Spotify account.
+                We currently offer two functionalities: track insights, and album insights. Please select whichever interests you below!
+            </p>
+        </div>
+
+        <hr>        
+
+        <br>
+
+        <div class="row justify-content-center">
+
+            <div class="col text-center">
+                <h2>Track Insights</h2>
+                <p>
+                    In order to retrieve your track insights, you first need to register an account with Spotify InSite. You can do that <a href="/register">here</a>. 
+                </p>        
+            </div>
+               
+            <div class="col text-center">
+                <h2>Album Insights</h2>
+                <p>
+                    Additionally, after registering an account with us, you will need to authorize the use of your Spotify account. You can learn more
+                     about that process  <a href="/about">here</a>.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+
+
+
+
+{% endblock %}
